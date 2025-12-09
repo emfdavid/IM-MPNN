@@ -95,7 +95,7 @@ class IMMPNN(torch.nn.Module):
         batches_in_scales = self.multiscale_convs[-1](batches_in_scales)
 
         batch = self.concat_scales(batches_in_scales)
-        return self.classifier(batch.x)
+        return self.classifier(batch.x).squeeze(-1)
 
 
 class MultiscaleGraphConvLayer(torch.nn.Module):
